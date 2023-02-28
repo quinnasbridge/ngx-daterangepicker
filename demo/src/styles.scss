@@ -1,10 +1,12 @@
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import '../../node_modules/materialize-css/dist/css/materialize.css';
+//@import '../../node_modules/materialize-css/dist/css/materialize.css';
 
 :root {
-    --active-bg-color: #3f51b5;
-    --in-range-bg-color: #dde2e4;
+    --drppicker-day-color: #23252B;
+    --active-bg-color: #00236F;
+    --in-range-bg-color: #E8EFFF;
+    --weekday-color: #B3B6C2;
 }
 
 .mycustomdate {

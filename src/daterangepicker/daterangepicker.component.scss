@@ -1,8 +1,10 @@
 /*
 *  variables
 */
-$md-drppicker-color:                      inherit !default;
+$md-drppicker-color:                      var(--drppicker-day-color);
+$md-drppicker-active-bg-color:            var(--active-bg-color);
 $md-drppicker-bg-color:                   #fff !default;
+$md-drppicker-weekday-color:              var(--weekday-color);
 
 $md-drppicker-cell-color:                 $md-drppicker-color !default;
 $md-drppicker-cell-border-color:          transparent !default;
@@ -12,12 +14,11 @@ $md-drppicker-cell-hover-color:           $md-drppicker-color !default;
 $md-drppicker-cell-hover-border-color:    $md-drppicker-cell-border-color !default;
 $md-drppicker-cell-hover-bg-color:        #eee !default;
 
-$md-drppicker-in-range-color:             #000 !default;
+$md-drppicker-in-range-color:             $md-drppicker-active-bg-color !default;
 $md-drppicker-in-range-border-color:      transparent !default;
 $md-drppicker-in-range-bg-color:          var(--in-range-bg-color);
 
 $md-drppicker-active-color:               #fff !default;
-$md-drppicker-active-bg-color:            var(--active-bg-color);
 $md-drppicker-active-border-color:        transparent !default;
 
 $md-drppicker-unselected-color:           #999 !default;
@@ -35,12 +36,13 @@ $md-drppicker-calendar-border-size:         1px !default;
 $md-drppicker-calendar-border-color:        $md-drppicker-bg-color !default;
 $md-drppicker-calendar-border-radius:       4px !default;
 
-$md-drppicker-cell-size:           20px !default;
+//$md-drppicker-cell-size:           20px !default;
+$md-drppicker-cell-size:           32px !default;
 $md-drppicker-cell-width:          $md-drppicker-cell-size !default;
 $md-drppicker-cell-height:         $md-drppicker-cell-size !default;
 
 $md-drppicker-cell-border-radius:  $md-drppicker-calendar-border-radius !default;
-$md-drppicker-cell-border-size:    1px !default;
+$md-drppicker-cell-border-size:    0px !default;
 
 $md-drppicker-control-height:               30px !default;
 $md-drppicker-control-line-height:          $md-drppicker-control-height !default;
@@ -64,20 +66,39 @@ $input-height: 3rem !default;
 /*
 * styles
 */
+
+.week-days {
+  font-size: 14px;
+  line-height: 19px;
+  
+  & th {
+    font-weight: 600;
+  }
+}
+
+.table-condensed {
+  border-collapse: collapse;
+}
+
 .md-drppicker {
   position: absolute;
-  font-family: Roboto, sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
   color: $md-drppicker-color;
   background-color: $md-drppicker-bg-color;
-  border-radius: 4px;
   width: $md-drppicker-width;
   padding: 4px;
   margin-top: -10px;
   overflow: hidden;
   z-index: 1000;
-  font-size: 14px;
   background-color: #ffffff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+
+  border-radius: 12px;
+  border: 1px solid #E7E9ED;
+  box-shadow: 0 1px 16px 0 rgba(0, 0, 0, 0.08), 0 1px 4px 0 rgba(0, 0, 0, 0.08);
+  
   &.double {
     width: $md-drppicker-width-double;
   }
@@ -219,7 +240,7 @@ $input-height: 3rem !default;
     margin: 0;
   }
   th {
-    color: #988c8c;
+    color: $md-drppicker-weekday-color;
   }
   td, th {
     text-align: center;
@@ -229,8 +250,8 @@ $input-height: 3rem !default;
     border: $md-drppicker-cell-border-size solid $md-drppicker-cell-border-color;
     white-space: nowrap;
     cursor: pointer;
-    height: 2em;
-    width: 2em;
+    // height: 2em;
+    // width: 2em;
 
     &.available {
       &.prev {
@@ -239,7 +260,7 @@ $input-height: 3rem !default;
         background-repeat: no-repeat;
         background-size: .5em;
         background-position: center;
-        opacity: .8;
+        //opacity: .8;
         transition: background-color .2s ease;
         border-radius: 2em;
         &:hover {
@@ -253,7 +274,7 @@ $input-height: 3rem !default;
         background-repeat: no-repeat;
         background-size: .5em;
         background-position: center;
-        opacity: .8;
+        //opacity: .8;
         transition: background-color .2s ease;
         border-radius: 2em;
         &:hover {
@@ -269,13 +290,8 @@ $input-height: 3rem !default;
         background-size: .5em;
         background-position: center;
         margin: .25em 0;
-        opacity: .8;
-        /*transition: background-color .2s ease;*/
-        border-radius: 2em;
-
         transform: scale(1);
         transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-
       }
     }
 
@@ -287,16 +303,18 @@ $input-height: 3rem !default;
 
   td {
         margin: .25em 0;
-        opacity: .8;
+        //opacity: .8;
         transition: background-color .2s ease;
-        border-radius: 2em;
+        //border-radius: 2em;
         transform: scale(1);
-        transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+        //transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
     &.off {
       &, &.in-range, &.start-date, &.end-date {
-        background-color: $md-drppicker-unselected-bg-color;
-        border-color: $md-drppicker-unselected-border-color;
-        color: $md-drppicker-unselected-color;
+        // background-color: $md-drppicker-unselected-bg-color;
+        // border-color: $md-drppicker-unselected-border-color;
+        // color: $md-drppicker-unselected-color;
+        opacity: 0;
+        visibility: hidden;
       }
     }
 
@@ -312,11 +330,11 @@ $input-height: 3rem !default;
     }
 
     &.start-date {
-      border-radius: 2em 0 0 2em;
+      border-radius: .5em 0 0 .5em;
     }
 
     &.end-date {
-      border-radius: 0 2em 2em 0;
+      border-radius: 0 .5em .5em 0;
     }
 
     &.start-date.end-date {
@@ -337,6 +355,9 @@ $input-height: 3rem !default;
   th {
     &.month {
       width: auto;
+      color: $md-drppicker-color;
+      font-size: 14px;
+      line-height: 19px;
     }
   }
 
@@ -387,7 +408,7 @@ $input-height: 3rem !default;
       &.monthselect,
       &.yearselect {
         cursor: pointer;
-        opacity: 0;
+        //opacity: 0;
         position: absolute; 
         top: 0; 
         left: 0; 
@@ -533,7 +554,7 @@ $input-height: 3rem !default;
         }
       }
       li:hover {
-        background-color: #eee;
+        //background-color: #eee;
       }
     }
   }
@@ -569,7 +590,8 @@ $input-height: 3rem !default;
     text-transform: uppercase;
     line-height: 36px;
     border: none;
-    &:hover, &:focus {
+    //&:hover, 
+    &:focus {
       background-color: $md-drppicker-active-bg-color;
     }
     & > * {

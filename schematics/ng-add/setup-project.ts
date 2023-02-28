@@ -33,7 +33,7 @@ export default function (options: Schema): Rule {
 function addDateRangePickerModule(options: any) {
     return (host: Tree) => {
         (async () => {
-            const workspace = await getWorkspace(host);
+            const workspace: any = await getWorkspace(host);
             const project = getProjectFromWorkspace(workspace, options.project);
 
             addModuleImportToRootModule(host, moduleName + '.forRoot()', 'ngx-daterangepicker-material', project);
