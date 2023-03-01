@@ -395,8 +395,8 @@ export class DaterangepickerDirective implements OnInit, OnChanges, DoCheck {
     if (this.opens === 'left') {
       style = {
         top: containerTop,
-        left: element.offsetLeft - container.clientWidth + element.clientWidth + 'px',
-        right: 'auto'
+        left: 'auto',
+        right: '0px'
       };
     } else if (this.opens === 'center') {
       style = {

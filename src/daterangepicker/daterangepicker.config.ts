@@ -35,6 +35,6 @@ export const DefaultLocaleConfig: LocaleConfig = {
   clearLabel: 'Clear',
   customRangeLabel: 'Custom range',
   daysOfWeek: dayjs.weekdaysMin(),
-  monthNames: dayjs.monthsShort(),
+  monthNames: dayjs.months(),
   firstDay: dayjs.localeData().firstDayOfWeek()
 };

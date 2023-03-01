@@ -21,7 +21,7 @@ $md-drppicker-in-range-bg-color:          var(--in-range-bg-color);
 $md-drppicker-active-color:               #fff !default;
 $md-drppicker-active-border-color:        transparent !default;
 
-$md-drppicker-unselected-color:           #999 !default;
+$md-drppicker-unselected-color:           #B3B6C2 !default;
 $md-drppicker-unselected-border-color:    transparent !default;
 $md-drppicker-unselected-bg-color:        #fff !default;
 
@@ -364,9 +364,10 @@ $input-height: 3rem !default;
   // disabled controls
   td, option {
     &.disabled {
-      color: #999;
+      color: $md-drppicker-unselected-color;
       cursor: not-allowed;
-      text-decoration: line-through;
+      opacity: 1;
+      visibility: visible;
     }
   }
 
